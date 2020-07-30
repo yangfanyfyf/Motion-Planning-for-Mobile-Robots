@@ -19,7 +19,7 @@ RRT*
 
 OBVP problem
 
-<img src="https://github.com/yangfanyfyf/Motion-Planning-for-Mobile-Robots/blob/master/hw4/ROS结果截图.png" width="400"  />
+<img src="https://github.com/yangfanyfyf/Motion-Planning-for-Mobile-Robots/blob/master/hw4/ROS结果截图.png" width="600"  />
 
 Minimum Snap Trajectory Generation
 
