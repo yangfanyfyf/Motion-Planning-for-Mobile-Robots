@@ -27,4 +27,4 @@ Minimum Snap Trajectory Generation
 
 Corridor-based and Bezier-based Minimum Snap Trajectory Optimization
 
-<img src="https://github.com/yangfanyfyf/Motion-Planning-for-Mobile-Robots/blob/master/hw6/截屏2020-07-30 下午5.18.23.png" width="400"  />
+<img src="https://github.com/yangfanyfyf/Motion-Planning-for-Mobile-Robots/blob/master/hw6/时间都等于2.png" width="400"  />
