@@ -1,7 +1,7 @@
 clc;clear;close all
 v_max = 400;
 a_max = 400;
-color = ['r', 'b', 'm', 'g', 'c', 'k', 'c'];
+color = ['r', 'b', 'm', 'g', 'k', 'c', 'c'];
 
 %% specify the center points of the flight corridor and the region of corridor
 path = [50, 50;
@@ -13,7 +13,7 @@ x_length = 100;
 y_length = 100;
 
 n_order = 7;   % 8 control points
-n_seg = size(path, 1);
+n_seg = size(path, 1)
 
 corridor = zeros(4, n_seg);
 for i = 1:n_seg
@@ -24,19 +24,17 @@ end
 ts = zeros(n_seg, 1);
 
 for i = 1:n_seg
-%     ts(i,1) = 100*sqrt(2)/v_max *2;
     ts(i,1) = 2;
 end
-
-
+% ts(1,1) = 0.9;
+% ts(2,1) = 1;
+% ts(3,1) = 1;
+% ts(4,1) = 1;
+% ts(5,1) = 1;
 
 
 poly_coef_x = MinimumSnapCorridorBezierSolver(1, path(:, 1), corridor, ts, n_seg, n_order, v_max, a_max);
 poly_coef_y = MinimumSnapCorridorBezierSolver(2, path(:, 2), corridor, ts, n_seg, n_order, v_max, a_max);
-% if (size(poly_coef_x,1) ~= 40 || size(poly_coef_y,1) ~= 40)
-%     disp("Error!")
-%     return;
-% end
 
 %% display the trajectory and cooridor
 plot(path(:,1), path(:,2), '*r'); hold on;
@@ -46,7 +44,6 @@ end
 hold on;
 x_pos = [];y_pos = [];
 idx = 1;
-
 %% #####################################################
 % STEP 4: draw bezier curve
 for k = 1:n_seg
@@ -55,19 +52,23 @@ for k = 1:n_seg
         x_pos(idx) = 0.0;
         y_pos(idx) = 0.0;
         for i = 0:n_order
+            
             basis_p = nchoosek(n_order, i) * t^i * (1-t)^(n_order-i);
-            x_pos(idx) = x_pos(idx) + poly_coef_x(i+1+(k-1)*(n_order), 1) * basis_p * ts(k);
-            y_pos(idx) = y_pos(idx) + poly_coef_y(i+1+(k-1)*(n_order), 1) * basis_p * ts(k);
+            x_pos(idx) = x_pos(idx) + poly_coef_x(i+1+(k-1)*(n_order+1), 1) * basis_p * ts(k);
+            y_pos(idx) = y_pos(idx) + poly_coef_y(i+1+(k-1)*(n_order+1), 1) * basis_p * ts(k);
         end
         idx = idx + 1;
     end
+    
     endIndex = idx - 1;
     plot(x_pos(startIndex:endIndex), y_pos(startIndex:endIndex), color(k), 'linewidth', 1);
     hold on
     num = (k-1)*(n_order+1);%每段长度
-    scatter(ts(k) * poly_coef_x(num+1:num+n_order+1, 1) , ts(k) * poly_coef_y(num+1:num+n_order+1, 1), color(k));
+    scatter(ts(k) * poly_coef_x(num+1:num+n_order+1, 1) , ts(k) * poly_coef_y(num+1:num+n_order+1, 1), 'filled', color(k));
     hold on
 end
+x_pos
+%plot (x_pos, y_pos)
 % scatter(...);
 % plot(...);
 
