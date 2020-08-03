@@ -32,7 +32,7 @@ def build_up_graph(grid, save_path):
         for vel in vel_list: # 每个点都按速度循环？？？？这个有什么意义
             state = Node(pnt[0], pnt[1], vel[0], vel[1])
             m_dist = np.abs(np.asarray(FINISH_LINE) - np.array([state.px, state.py])) # 前一项的每一个元素都会和后面的相减
-
+            
             # IMPORTANT-1 Heuristic Function design here
             # TO BE IMPLEMENTED
             
@@ -43,8 +43,8 @@ def build_up_graph(grid, save_path):
             #heuristic = m_dist[:, 0] + m_dist[:, 1]  # Mahalonobis distance
 
             # diagonal heuristic 
-            heuristic = m_dist[:, 0] + m_dist[:, 1] + (2 ** 0.5 - 2) * np.min(m_dist, axis=1)[:, np.newaxis] + 0.005
-
+            
+            heuristic = m_dist[:, 0] + m_dist[:, 1] + (2 ** 0.5 - 2) * np.min(m_dist, axis = 1)[:, np.newaxis]
 
             state.g_value = np.min(heuristic) # 取最小的
             print(state.g_value)
@@ -131,9 +131,9 @@ def real_time_dynamic_programming():
     bellman_error = np.inf
     bellman_error_list = []
 
-    # IMPORTAN-2: implement RTDP
+    # IMPORTANT-2: implement RTDP
     while bellman_error > 0.0001:
-    # for i in range(500): # YOU MAY CHANGE THIS VALUE
+    #for i in range(30): # YOU MAY CHANGE THIS VALUE
         itr_num += 1
         bellman_error = 0.0
         rand_start = np.random.randint(low=0, high=3, size=1)[0] # 返回[0,3)之间的一个随机数，随机选择一个起点？
@@ -145,7 +145,7 @@ def real_time_dynamic_programming():
                 state.g_value = 0
             else:
                 value_uk = []
-                for child_idx in range(len(ACTION_SPACE)): # 所有可能的方向
+                for child_idx in range(len(ACTION_SPACE)): # 所有可能的动作
                     child_key_9 = state.next_prob_9[child_idx]
                     child_9 = graph[child_key_9]
                     child_key_1 = state.next_prob_1[child_idx]
