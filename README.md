@@ -1,8 +1,8 @@
 # Motion-Planning-for-Mobile-Robots
 
-Language: MATLAB, C++
+Language: MATLAB, C++, Python
 
-Themes: A*, RRT*, OBVP problem, Minimum Snap Trajectory Generation, Corridor-based and Bezier-based Minimum Snap Trajectory Optimization
+Themes: A*, RRT*, OBVP problem, Minimum Snap Trajectory Generation, Corridor-based and Bezier-based Minimum Snap Trajectory Optimization, MDP and Real Time Dynamic programming
 
 
 A*
@@ -28,3 +28,7 @@ Minimum Snap Trajectory Generation
 Corridor-based and Bezier-based Minimum Snap Trajectory Optimization
 
 <img src="https://github.com/yangfanyfyf/Motion-Planning-for-Mobile-Robots/blob/master/hw6/时间都等于2.png" width="400"  />
+
+MDP and Real Time Dynamic programming
+
+<img src="https://github.com/yangfanyfyf/Motion-Planning-for-Mobile-Robots/blob/master/hw7/Figure_1.png" width="400"  />
