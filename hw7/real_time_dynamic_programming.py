@@ -162,7 +162,7 @@ def real_time_dynamic_programming():
                 bellman_error += np.linalg.norm(state.g_value - current_value) # 计算误差
 
                 # TO BE IMPLEMENTED
-                state.g_value = min(value_uk) # 更新
+                state.g_value = current_value # 更新
                 
             # end if
         # end for
