@@ -1,6 +1,6 @@
 # Motion-Planning-for-Mobile-Robots
 
-A Course from Shenlan
+A Course from www.shenlanxueyuan.com
 
 Language: MATLAB, C++, Python
 
