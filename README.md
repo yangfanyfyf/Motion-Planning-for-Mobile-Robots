@@ -31,4 +31,4 @@ Corridor-based and Bezier-based Minimum Snap Trajectory Optimization
 
 MDP and Real Time Dynamic programming
 
-<img src="https://github.com/yangfanyfyf/Motion-Planning-for-Mobile-Robots/blob/master/hw7/Figure_1.png" width="400"  />
+<img src="https://github.com/yangfanyfyf/Motion-Planning-for-Mobile-Robots/blob/master/hw7/修改符号后的Diagonal.png" width="400"  />
