@@ -13,7 +13,7 @@ x_length = 100;
 y_length = 100;
 
 n_order = 7;   % 8 control points
-n_seg = size(path, 1)
+n_seg = size(path, 1);
 
 corridor = zeros(4, n_seg);
 for i = 1:n_seg
@@ -67,7 +67,6 @@ for k = 1:n_seg
     scatter(ts(k) * poly_coef_x(num+1:num+n_order+1, 1) , ts(k) * poly_coef_y(num+1:num+n_order+1, 1), 'filled', color(k));
     hold on
 end
-x_pos
 %plot (x_pos, y_pos)
 % scatter(...);
 % plot(...);
