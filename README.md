@@ -1,6 +1,7 @@
 # Motion-Planning-for-Mobile-Robots
 
-Fan Yang 2020.08
+Fan Yang 
+2020.06-2020.08
 
 A Course from www.shenlanxueyuan.com
 
