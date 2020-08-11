@@ -13,14 +13,18 @@ w2 = 1;
 w3 = 1;
 w4 = 1;
 
-for t = 0.2:0.2:10
-    [Tp, Tv, Ta, Bp, Bv, Ba] = getPredictionMatrix(K, dt, p_0, v_0, a_0);
+for t = 0.2:0.2:15
+    [Tp, Tv, Ta, Bp, Bv, Ba] = getPredictionMatrix(K, dt, p_0, v_0, a_0); %预测的时长都是4s，但是每次预测只执行0.2s
     
     H = w4 * eye(K) + w1 * (Tp'*Tp) + w2 * (Tv'*Tv) + w3 * (Ta'*Ta);
     
     F = w1 * Bp' * Tp + w2 * Bv' *Tv + w3 * Ba' * Ta;
     
-    J = quadprog(H, F, [], []);
+    A = [Tv; -Tv; Ta; -Ta; eye(K); -eye(K)];
+    
+    b = [ones(20,1)-Bv; ones(20,1)+Bv; ones(20,1)-Ba; ones(20,1)+Ba; ones(20,1); ones(20,1)];
+    
+    J = quadprog(H, F, A, b);
     
     j = J(1);
     
