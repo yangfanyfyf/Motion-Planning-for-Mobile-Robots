@@ -6,7 +6,7 @@ A Course from www.shenlanxueyuan.com
 
 Language: MATLAB, C++, Python
 
-Themes: A*, RRT*, OBVP problem, Minimum Snap Trajectory Generation, Corridor-based and Bezier-based Minimum Snap Trajectory Optimization, MDP and Real Time Dynamic programming, MPC
+Themes: A*, RRT*, Optimal Boundary Value Problem, Minimum Snap Trajectory Generation, Corridor-based and Bezier-based Minimum Snap Trajectory Optimization, MDP and Real Time Dynamic programming, MPC
 
 
 A*
