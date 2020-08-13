@@ -12,7 +12,7 @@ function [Q, M] = getQM(n_seg, n_order, ts)
                 if (i < 4 || l < 4)
                     continue;
                 else
-                    Q_k(i+1 ,l+1) = i*(i-1)*(i-2)*(i-3)*l*(l-1)*(l-2)*(l-3)/(i+l-7)*ts(k)^(3-2*3); 
+                    Q_k(i+1 ,l+1) = i*(i-1)*(i-2)*(i-3)*l*(l-1)*(l-2)*(l-3)/(i+l-7)*ts(k)^(3-2*4); 
                 end
             end
         end

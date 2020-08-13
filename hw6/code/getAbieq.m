@@ -1,8 +1,6 @@
 function [Aieq, bieq] = getAbieq(n_seg, n_order, corridor_range, ts, v_max, a_max)
     n_all_poly = n_seg*(n_order+1);
     
-    
-    
     %#####################################################
     % STEP 3.2.1 p constraint
     Aieq_p = zeros(2*n_all_poly, n_all_poly);
@@ -27,12 +25,13 @@ function [Aieq, bieq] = getAbieq(n_seg, n_order, corridor_range, ts, v_max, a_ma
     
     Aieq_v = zeros(2*num, n_all_poly);
     bieq_v = zeros(2*num, 1);
+    
     for i = 1:n_seg
         for j = 1:n_order 
             index = j + (i-1)*n_order;
-            
-            Aieq_v(index, index:index+1) = n_order * [-1 1] * ts(i,1)^(0);
-            Aieq_v(index + num, index:index+1) = - n_order * [-1 1] * ts(i,1)^(0);
+            indexCol = j + (i-1)*(n_order+1);
+            Aieq_v(index, indexCol:indexCol+1) = n_order * [-1 1] * ts(i,1)^(0);
+            Aieq_v(index + num, indexCol:indexCol+1) = - n_order * [-1 1] * ts(i,1)^(0);
             
             bieq_v(index, 1) = v_max;
             bieq_v(index + num, 1) = v_max;
@@ -48,9 +47,10 @@ function [Aieq, bieq] = getAbieq(n_seg, n_order, corridor_range, ts, v_max, a_ma
     for i = 1:n_seg
         for j = 1:n_order - 1 
             index = j + (i-1)*(n_order-1);
+            indexCol = j + (i-1)*(n_order+1); % 注意！第三次修改，之前的错误，两个index不一样，导致出现奇怪的轨迹
             
-            Aieq_a(index, index:index+2) = n_order * (n_order-1) * [1 -2 1] * ts(i,1)^(-1);
-            Aieq_a(index + num, index:index+2) = - n_order * (n_order-1) * [1 -2 1] * ts(i,1)^(-1);
+            Aieq_a(index, indexCol:indexCol+2) = n_order * (n_order-1) * [1 -2 1] * ts(i,1)^(-1);
+            Aieq_a(index + num, indexCol:indexCol+2) = - n_order * (n_order-1) * [1 -2 1] * ts(i,1)^(-1);
             
             bieq_a(index, 1) = a_max;
             bieq_a(index + num, 1) = a_max;

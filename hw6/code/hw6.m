@@ -24,7 +24,7 @@ end
 ts = zeros(n_seg, 1);
 
 for i = 1:n_seg
-    ts(i,1) = 2;
+    ts(i,1) = 1;
 end
 % ts(1,1) = 0.9;
 % ts(2,1) = 1;
