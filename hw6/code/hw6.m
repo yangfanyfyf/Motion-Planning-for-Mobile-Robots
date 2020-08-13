@@ -26,11 +26,11 @@ ts = zeros(n_seg, 1);
 for i = 1:n_seg
     ts(i,1) = 1;
 end
-% ts(1,1) = 0.9;
-% ts(2,1) = 1;
-% ts(3,1) = 1;
-% ts(4,1) = 1;
-% ts(5,1) = 1;
+ts(1,1) = 0.9;
+ts(2,1) = 5;
+ts(3,1) = 2;
+ts(4,1) = 3;
+ts(5,1) = 4;
 
 
 poly_coef_x = MinimumSnapCorridorBezierSolver(1, path(:, 1), corridor, ts, n_seg, n_order, v_max, a_max);
