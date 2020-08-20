@@ -43,10 +43,11 @@ def build_up_graph(grid, save_path):
             #heuristic = m_dist[:, 0] + m_dist[:, 1]  # Mahalonobis distance
 
             # diagonal heuristic 
-            
             heuristic = m_dist[:, 0] + m_dist[:, 1] + (2 ** 0.5 - 2) * np.min(m_dist, axis = 1)[:, np.newaxis]
+            # heuristic = np.linalg.norm(m_dist, axis = 1)
 
-            state.g_value = np.min(heuristic) # 取最小的
+            state.g_value = np.min(heuristic)/3 # 除以三，使得heu的值接近加速度的变化次数
+            
             print(state.g_value)
             state.connect_to_graph(grid)
             graph[state.key] = state
