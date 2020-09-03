@@ -31,12 +31,20 @@ for j=1:batch %生成后续点
             %v_ini, p0, 
             
             %--------------------------------------------------------------
-            %速度更新
-            P(i,2) = w * P(i,2) + P(i,3) * rand * (P(i,5) - P(i,1)) + P(i,4) * rand * (global_best(1) - P(i,1));
+%             %速度更新
+%             P(i,2) = w * P(i,2) + P(i,3) * rand * (P(i,5) - P(i,1)) + P(i,4) * rand * (global_best(1) - P(i,1));
+%             
+%             %位置更新
+%             P(i,1) = P(i,1) + P(i,2);
+            P(i,3) = rand * (global_best(1) - P(i,1)) + rand * (P(i,5) - P(i,1)) + P(i,3);
+            P(i,4) = rand * (global_best(2) - P(i,2)) + rand * (P(i,6) - P(i,2)) + P(i,3);
             
-            %位置更新
-            P(i,1) = P(i,1) + P(i,2);
+            P(i,1) = P(i,1) + P(i,3);
+            P(i,2) = P(i,2) + P(i,4);
             
+            P(i,1:2) = limitRange(P(i,1:2));
+
+
         end
         %evaluate the particles
         cost = evaluate(R,omega,p0,P(i,1),last_theta-theta,v_ini,P(i,2));
